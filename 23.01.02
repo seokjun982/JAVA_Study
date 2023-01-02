@@ -1,20 +1,71 @@
 java study 230102
 
+클래스 : 붕어빵틀
+인스턴스 : 붕어빵
+
+
 객체 생성과 클래스 변수
 new 클래스 ();
 new는 클래스로부터 객체를 생성시키는 연산자이다. new연산자 뒤에는 생성자가 오는데 생성자는 클래스()형태를 가진다
 new 연산자로 생성된 객체는 메모리 힙 영역에 생성
 >>> 현실세계에서 물건의 위치를 모르면 물건을 사용할 수 없듯이 객체 지향 프로그램에서도 메모리 내에서 생성된 객체의 위치를 모르면
-객체를 사용 할 수 없다. 그래서 new연산자는 힙 영역에 객체를 생성시킨 후 객체의 번지를 리턴하도록 되어 있다. 
+객체를 사용 할 수 없다. 그래서 new연산자는 힙 영역에 객체를 생성시킨 후 객체의 번지를 리턴하도록 되어 있다.
+
+public class Main {
+    public static void main(String[] args) {
+    
+        //생성자가 없는 경우
+        Student student1 = new Student();
+        
+        //생성자가 있는 경우
+        Student student2 = new Student("홍길동", 18, 100, 90, 80);
+    }
+}
 
 클래스의 구성 멤버
-구성멤버네은 필드, 생성자, 메소드가 있다. 
+구성멤버에는 필드, 생성자, 메소드가 있다. 
 ex>
 public class ClassName{
 
 int fieldname; // 필드 : 객체의 데이터가 저장되는 곳
-ClassName() {} // 생성자 : 객체 생성 시 초기화 역활
-void methodName() {} // 메소드 : 객체의 동작에 해당하는 실행 블록
+ClassName(String name, int age, int kor_score) {} // 생성자 : 객체 생성 시 초기화 역활
+public void methodName() {} // 메소드 : 객체의 동작에 해당하는 실행 블록
+
+
+
+class Student{
+    //필드(Field)
+    String name; //이름
+    int age; //나이
+    int korean_scroe; //국어성적
+    int math_score; //수학성적
+    int english_score; //영어성적
+    
+    //생성자(Constructor)
+    Student(String name, int age, int kor_score, int mat_score, int eng_score){
+        this.name = name;
+        this.age = age;
+        this.korean_scroe = kor_score;
+        this.math_score = mat_score;
+        this.english_score = eng_score;
+    }
+    
+    //메소드(Method)
+    public void printScore() {
+        System.out.println("이름 : " + name);
+        System.out.println("나이 : " + age);
+        System.out.println("국어성적 : " + korean_scroe);
+        System.out.println("수학성적 : " + math_score);
+        System.out.println("영어성적 : " + english_score);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Student student = new Student("홍길동", 18, 100, 90, 80);
+        student.printScore(); //인스턴스 메소드 호출
+    }
+}
 
 
 필드 : 필드는 개게의 고유 데이터, 부품객체, 상태정보를 저장하는 곳이다. 필드는 변수와 다르다
@@ -33,4 +84,14 @@ EX > String company = "현대자동차"; , String model = "그랜져";
 메소드 : 메소드는 객체의 동작에 해당하는 중괄호 블록을 말한다. 메소드를 호출하게 되면 중괄호 블록에 있는 모든 코드들이 일괄적으로 실행된다.
 이때 메소드는필드를 읽고 수정하는 역활도 하지만 다른 객체를 생성해서 다양한 기능을 수행하기도 한다. 메소드는 객체 간의 데이터를 전달하는 수단이다.
 외부의 호출한곳으로부터 매개값을 받아 샐행에 이용하고 실행 후 결과 값을 외부로 리턴할 수도 있다.
+
+
+리턴값이 있는 메소드
+메소드 선언에 리턴 타입이 있는 메소드는 반드시 리턴문을 사용해서 리턴값을 지정해야 합니다. 만약 return문이 없다면 컴파일 에러가 발생하고 return문이 실행되면 메소드는 즉시 종료됩니다.
+
+리턴값이 없는 메소드 : void
+리턴값이 없는 메소드는 리턴 타입으로 void를 사용합니다. 그런데 void로 선언된 메소드에서도 return문을 사용할 수 있습니다. 이것은 리턴값을 지정하는 것이 아니라 
+메소드 실행을 강제 종료시키는 역활을 한다.
+
+
 
